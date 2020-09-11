@@ -1,6 +1,7 @@
 <div align="center">
 
   [![Open Source](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://opensource.org/)
+  [![Build Status](https://travis-ci.org/AndrewPomorski/wasm-game-of-life.svg?branch=master)](https://travis-ci.org/AndrewPomorski/wasm-game-of-life)
   <h1><code>wasm-pack-template</code></h1>
 
   <strong>A template for kick starting a Rust and WebAssembly project using <a href="https://github.com/rustwasm/wasm-pack">wasm-pack</a>.</strong>
