@@ -14,10 +14,13 @@ matrix:
       chrome: stable
     before_script:
       - (test -x $HOME/.cargo/bin/cargo-install-update || cargo install cargo-update)
-      - (test -x $HOME/.cargo/bin/cargo-generate || cargo install --vers "^0.2" cargo-generate)
+      - (test -x $HOME/.cargo/bin/cargo-generate || cargo install --vers "0.2.2" cargo-generate)
+      - cargo generate --version
       - cargo install-update -a
       - curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh -s -- -f
     script:
+      - pwd
+      - git status
       - cargo generate --git . --name testing
       # Having a broken Cargo.toml (in that it has curlies in fields) anywhere
       # in any of our parent dirs is problematic.
@@ -67,3 +70,4 @@ matrix:
       - cargo check --target wasm32-unknown-unknown --no-default-features --features console_error_panic_hook
       # Note: no enabling the `wee_alloc` feature here because it requires
       # nightly for now.
+
