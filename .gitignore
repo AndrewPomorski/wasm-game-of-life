@@ -2,7 +2,6 @@ www/node_modules
 www/dist
 /target
 **/*.rs.bk
-Cargo.lock
 bin/
 pkg/
 wasm-pack.logs
