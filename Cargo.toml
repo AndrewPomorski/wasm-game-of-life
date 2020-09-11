@@ -34,7 +34,7 @@ opt-level = "s"
 
 # Disable wasm-opt as it breaks the build
 [package.metadata.wasm-pack.profile.dev]
-wasm-opt = false: 
+wasm-opt = false 
 
 [package.metadata.wasm-pack.profile.release]
 wasm-opt = false
