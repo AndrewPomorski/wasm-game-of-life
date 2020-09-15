@@ -5,10 +5,11 @@ const CELL_SIZE = 5;
 const GRID_COLOR = '#CCCCCC';
 const DEAD_COLOR = '#FFFFFF';
 const ALIVE_COLOR = '#FF0000';
-
 const universe = Universe.new();
 const width = universe.width(); 
 const height = universe.height();
+
+let FPS = 30;
 
 
 const pausePlayBtn = document.getElementById('play-pause');
@@ -21,12 +22,15 @@ canvas.width = (CELL_SIZE + 1) * width + 1;
 let animationFrame = null;
 
 const renderLoop = () => {
-  universe.tick();
-  
-  drawGrid();
-  drawCells();
+  setTimeout(() => {
 
-  animationFrame = requestAnimationFrame(renderLoop);
+    universe.tick();
+    
+    drawGrid();
+    drawCells();
+
+    animationFrame = requestAnimationFrame(renderLoop);
+  }, 1000 / FPS);
 };
 
 const isPaused = () => {
@@ -100,4 +104,6 @@ const drawCells = () => {
 drawGrid();
 drawCells();
 play();
+
+document.getElementById('fps-slider').addEventListener('change', e => FPS = e.currentTarget.value); 
 
