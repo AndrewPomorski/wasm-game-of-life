@@ -22,8 +22,43 @@ canvas.width = (CELL_SIZE + 1) * width + 1;
 
 let animationFrame = null;
 
+<<<<<<< HEAD
 const isPaused = () => animationFrame === null;
 const getIndex = (row, column) => row * width + column;
+=======
+const renderLoop = () => {
+  setTimeout(() => {
+
+    universe.tick();
+  drawGrid();
+  drawCells();
+
+    animationFrame = requestAnimationFrame(renderLoop);
+  }, 1000 / FPS);
+};
+
+const isPaused = () => {
+  return animationFrame === null;
+}
+
+
+const play = () => {
+  renderLoop();
+};
+
+const pause = () => {
+  cancelAnimationFrame(animationFrame);
+  animationFrame= null;
+};
+
+pausePlayBtn.addEventListener("click", event => {
+  if (isPaused()) {
+    play();
+  } else {
+    pause();
+  }
+});
+>>>>>>> c9bc021e71a47389ba62f16e29fcebce1357dd78
 
 const drawGrid = () => {
   ctx.beginPath();
@@ -78,6 +113,18 @@ canvas.addEventListener('click', (event) => {
   const canvasLeft = (event.clientX - boundingRect.left) * scaleX;
   const canvasTop = (event.clientY - boundingRect.top) * scaleY;
 
+<<<<<<< HEAD
+=======
+canvas.addEventListener("click", e => {
+  const boundingRect = canvas.getBoundingClientRect();
+  
+  const scaleX = canvas.width / boundingRect.width;
+  const scaleY = canvas.height / boundingRect.height;
+
+  const canvasLeft = (event.clientX - boundingRect.left) * scaleX;
+  const canvasTop = (event.clientY - boundingRect.top) * scaleY;
+
+>>>>>>> c9bc021e71a47389ba62f16e29fcebce1357dd78
   const row = Math.min(Math.floor(canvasTop / (CELL_SIZE + 1)), height - 1);
   const col = Math.min(Math.floor(canvasLeft / (CELL_SIZE + 1)), width - 1);
 
@@ -85,6 +132,7 @@ canvas.addEventListener('click', (event) => {
 
   drawGrid();
   drawCells();
+<<<<<<< HEAD
 });
 
 const renderLoop = () => {
@@ -97,6 +145,12 @@ const renderLoop = () => {
 
   }, 1000 / FPS);
 };
+=======
+
+});
+
+document.getElementById('fps-slider').addEventListener('change', e => FPS = e.currentTarget.value); 
+>>>>>>> c9bc021e71a47389ba62f16e29fcebce1357dd78
 
 const play = () => {
   renderLoop();
